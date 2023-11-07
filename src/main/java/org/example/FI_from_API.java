@@ -1,4 +1,4 @@
-package lets_get_certified.lambdas;
+package org.example;
 
 import java.time.LocalTime;
 import java.util.ArrayList;
@@ -30,12 +30,12 @@ public class FI_from_API {
     }
     public void predicate() {
         // Predicate<T> is a functional interface i.e. one abstract method:
-        //      boolean test(T t); 
+        //      boolean test(T t);
         Predicate<String> pStr = s -> s.contains("City");
         System.out.println(pStr.test("Vatican City"));//true
 
         // BiPredicate<T, U> is a functional interface i.e. one abstract method:
-        //      boolean test(T t, U u); 
+        //      boolean test(T t, U u);
         BiPredicate<String, Integer> checkLength = (str, len) -> str.length() == len;
         System.out.println(checkLength.test("Vatican City", 8));//false (length is 12)
 
@@ -46,10 +46,10 @@ public class FI_from_API {
         //      T get()
         Supplier<StringBuilder> supSB = () -> new StringBuilder();
         System.out.println("Supplier SB: " + supSB.get().append("SK"));// Supplier SB: SK
-        
+
         Supplier<LocalTime> supTime = () -> LocalTime.now();
         System.out.println("Supplier time: " + supTime.get());//Supplier time: 09:11:39.121101600
-        
+
         Supplier<Double> sRandom = () -> Math.random();
         System.out.println(sRandom.get());// e.g. 0.782467864130131
     }
@@ -59,7 +59,7 @@ public class FI_from_API {
         //      void accept(T t)
         Consumer<String> printC = s -> System.out.println(s);// lambda
         printC.accept("To be or not to be, that is the question");
-        
+
         List<String> names = new ArrayList<>();
         names.add("John");names.add("Mary");
         names.forEach(printC);  // John, Mary
@@ -73,7 +73,7 @@ public class FI_from_API {
         biCon.accept("Washington D.C.", "USA");
         System.out.println(mapCapitalCities);// {Dublin=Ireland, Washington D.C.=USA}
 
-        BiConsumer<String, String> mapPrint = (key, value) -> 
+        BiConsumer<String, String> mapPrint = (key, value) ->
                                                     System.out.println(key + " is the capital of: "+value);
         mapCapitalCities.forEach(mapPrint); // Dublin is the capital of: Ireland
                                             // Washington D.C. is the capital of: USA
