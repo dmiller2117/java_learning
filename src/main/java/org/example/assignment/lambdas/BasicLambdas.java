@@ -1,5 +1,8 @@
 package org.example.assignment.lambdas;
 
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
 import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.function.Predicate;
@@ -30,6 +33,39 @@ public class BasicLambdas {
 
         function(25);
         System.out.println("=====================================");
+
+        System.out.println("=============== PART TWO ===============");
+
+        List<Person> people = getPeople();
+
+        sortAge(people);
+        Consumer<Person> personAge = person -> System.out.println("Person Age Print consumer :: " + person);
+        people.forEach(personAge);
+        people.forEach(System.out::println);
+
+        sortName(people);
+        Consumer<Person> personName = person -> System.out.println("Person Name Print consumer :: " + person);
+        people.forEach(personName);
+        people.forEach(System.out::println);
+
+        sortHeight(people);
+        Consumer<Person> personHeight = person -> System.out.println("Person Height Print consumer :: " + person);
+        people.forEach(personHeight);
+        people.forEach(System.out::println);
+
+        System.out.println("=====================================");
+    }
+
+    private static void sortHeight(List<Person> people) {
+        people.sort(Comparator.comparing(Person::getHeight));
+    }
+
+    private static void sortName(List<Person> people) {
+        people.sort(Comparator.comparing(Person::getName));
+    }
+
+    private static void sortAge(List<Person> people) {
+        people.sort(Comparator.comparing(Person::getAge));
     }
 
     static void consumer(String toPrint) {
@@ -60,9 +96,18 @@ public class BasicLambdas {
     }
 
     static void function(Integer integer) {
-        Functionable<Integer, String> functionable = i -> String.format("The number is :: %s", i.toString());
+        Functionable<Integer, String> functionable = i -> "The number is :: " + i;
         System.out.println("with Functionable :: " + functionable.applyThis(integer));
-        Function<Integer, String> function = i -> String.format("The number is :: %s", i.toString());
+        Function<Integer, String> function = i -> "The number is :: " + i;
         System.out.println("with Function :: " + function.apply(integer));
+    }
+
+    private static List<Person> getPeople() {
+        List<Person> result = new ArrayList<>();
+        result.add(new Person("Mike", 33, 1.8));
+        result.add(new Person("Mary", 25, 1.4));
+        result.add(new Person("Alan", 34, 1.7));
+        result.add(new Person("Zoe", 30, 1.5));
+        return result;
     }
 }
