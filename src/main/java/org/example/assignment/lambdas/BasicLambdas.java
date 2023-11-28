@@ -77,6 +77,11 @@ public class BasicLambdas {
         consumerMr.accept(toPrint);
     }
 
+    interface Printable<T> {
+
+        void print(T t);
+    }
+
     static void supplier() {
         Retrievable<Integer> retrievable = () -> 77;
         System.out.println("with Retrievable :: " + retrievable.retrieve());
