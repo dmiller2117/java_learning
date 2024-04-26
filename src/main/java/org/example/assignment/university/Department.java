@@ -1,4 +1,4 @@
 package org.example.assignment.university;
 
-public class Department {
+sealed class Department permits AccountingDept, ComputerEngineeringDept, SocialCareDept, SoftwareEngineeringDept {
 }

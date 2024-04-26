@@ -1,4 +1,13 @@
 package org.example.assignment.university;
 
-public class AccountingDept {
+final class AccountingDept extends Department {
+
+    void accounting() {
+        System.out.println("Custom accounting");
+    }
+
+    @Override
+    public String toString() {
+        return "Accounting";
+    }
 }

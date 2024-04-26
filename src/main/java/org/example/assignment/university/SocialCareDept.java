@@ -1,4 +1,13 @@
 package org.example.assignment.university;
 
-public class SocialCareDept {
+final class SocialCareDept extends Department {
+
+    void socialCare() {
+        System.out.println("Custom social care");
+    }
+
+    @Override
+    public String toString() {
+        return "Social Care";
+    }
 }

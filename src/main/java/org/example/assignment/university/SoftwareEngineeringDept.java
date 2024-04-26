@@ -1,4 +1,13 @@
 package org.example.assignment.university;
 
-public class SoftwareEngineeringDept {
+final class SoftwareEngineeringDept extends Department {
+
+    void swEng() {
+        System.out.println("Custom software engineering");
+    }
+
+    @Override
+    public String toString() {
+        return "Software Engineering";
+    }
 }
