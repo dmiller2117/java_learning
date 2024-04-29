@@ -18,9 +18,10 @@ public class LocalVariableTypeInference {
     //      - var var = 8; //ok
     //      - identifiers can be called var but not type names e.g. classes, interfaces, enums.
 
-    var z = 3;            // 2.
-    static var a = 3;     // 2.
+    //var z = 3;            // 2.
+    //static var a = 3;     // 2.
 
+/*
     { // init block
         var d = 4.5;    // 1. 'd' is now double
         d = 98.9;         // 4. value can change
@@ -29,14 +30,16 @@ public class LocalVariableTypeInference {
         var x;          // 3. These 2 lines statements need
         x = 2;            // 3. to be one statement.
     }
+*/
 
-    LocalVariableTypeInference(var x) { // 2.
-        var i = 9;       // 1.
+//    LocalVariableTypeInference(var x) { // 2.
+//        var i = 9;       // 1.
+//
+//        var j = null;             // 5. is 'j' a String, Double, Integer etc... ?
+//        var s = (String) null;     // 5. cast null to a type first
+//    }
 
-        var j = null;             // 5. is 'j' a String, Double, Integer etc... ?
-        var s = (String) null;     // 5. cast null to a type first
-    }
-
+/*
     public static void main(String[] args) {
         var s = "abc";  // 1.
 
@@ -57,11 +60,16 @@ public class LocalVariableTypeInference {
         System.out.println(ls); // [b]
     }
 }
-
+*/
+}
+/*
 class var {
 }
+
+
 
 enum var {}
 
 interface var {
 }
+*/

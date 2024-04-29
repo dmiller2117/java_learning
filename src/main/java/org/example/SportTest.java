@@ -23,7 +23,7 @@ interface Tennis {
     }
 
     static void backhand() {
-        smash();// static to instance not allowed!
+        //smash();// static to instance not allowed!
         hit("backhand");
     }
 }
@@ -32,7 +32,7 @@ public class SportTest implements Tennis {
     public static void main(String[] args) {
         new SportTest().forehand(); // Hitting a forehand
         Tennis.backhand();          // Hitting a backhand
-        new SportTest().hit();
-        new SportTest().smash();
+      //  new SportTest().hit();
+      //  new SportTest().smash();
     }
 }
