@@ -28,6 +28,5 @@ public class University {
         phdMsg = joeBloggs.hasPhd() ? "Joe has a PhD" : "Joe has not a PhD";
         System.out.println(phdMsg);
 
-
     }
 }
