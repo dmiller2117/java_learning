@@ -22,7 +22,7 @@ public record LecturerRecord(String name, Integer age, Faculty faculty, Departme
             default:
                 String postFix = name.substring(name.length() - 3);
                 switch (postFix) {
-                    case "Phd":
+                    case "PhD":
                         hasPhd = true;
                         break;
                     default:
@@ -33,18 +33,18 @@ public record LecturerRecord(String name, Integer age, Faculty faculty, Departme
     }
 
     void whichFaculty() {
-        var msg = "Faculty of: %s";
+        var msg = "Faculty of: ";
         switch (faculty) {
             case EngineeringFaculty ef -> {
-                System.out.printf(msg, ef);
+                System.out.println(msg + ef);
                 ef.engineering();
             }
             case HumanitiesFaculty hf -> {
-                System.out.printf(msg, hf);
+                System.out.println(msg + hf);
                 hf.humanities();
             }
             case BusinessFaculty bf -> {
-                System.out.printf(msg, bf);
+                System.out.println(msg + bf);
                 bf.business();
             }
             default -> throw new IllegalArgumentException(faculty.toString());
