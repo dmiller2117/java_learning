@@ -9,7 +9,7 @@
     <version>1.0-SNAPSHOT</version>
 
     <properties>
-        <java.version>17</java.version>
+        <java.version>22</java.version>
         <maven.compiler.source>${java.version}</maven.compiler.source>
         <maven.compiler.target>${java.version}</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -23,7 +23,8 @@
                 <version>3.13.0</version>
                 <configuration>
                     <release>${java.version}</release>
-                    <enablePreview>true</enablePreview>
+                    <compilerArgs>--enable-preview</compilerArgs>
+<!--                    <enablePreview>true</enablePreview>-->
                 </configuration>
             </plugin>
         </plugins>
