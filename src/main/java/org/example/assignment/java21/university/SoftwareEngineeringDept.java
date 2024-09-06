@@ -1,6 +1,6 @@
-package org.example.assignment.university;
+package org.example.assignment.java21.university;
 
-final class SoftwareEngineeringDept extends Department {
+public final class SoftwareEngineeringDept extends Department {
 
     void swEng() {
         System.out.println("Custom software engineering");

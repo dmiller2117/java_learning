@@ -1,4 +1,4 @@
-package org.example.assignment.university;
+package org.example.assignment.java21.university;
 
 final class AccountingDept extends Department {
 

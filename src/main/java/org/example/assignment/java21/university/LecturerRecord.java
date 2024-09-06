@@ -1,4 +1,4 @@
-package org.example.assignment.university;
+package org.example.assignment.java21.university;
 
 public record LecturerRecord(String name, Integer age, Faculty faculty, Department dept) {
 

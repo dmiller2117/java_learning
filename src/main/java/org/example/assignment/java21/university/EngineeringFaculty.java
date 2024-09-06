@@ -1,6 +1,6 @@
-package org.example.assignment.university;
+package org.example.assignment.java21.university;
 
-final class EngineeringFaculty extends Faculty {
+public final class EngineeringFaculty extends Faculty {
 
     void engineering() {
         System.out.println("We teach computer science, civil engineering etc…");
