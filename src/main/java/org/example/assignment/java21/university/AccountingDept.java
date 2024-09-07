@@ -1,9 +1,9 @@
 package org.example.assignment.java21.university;
 
-final class AccountingDept extends Department {
+public final class AccountingDept extends Department {
 
     void accounting() {
-        System.out.println("Custom accounting");
+        System.out.println( "Custom accounting" );
     }
 
     @Override
