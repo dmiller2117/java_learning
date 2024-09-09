@@ -1,12 +1,17 @@
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;
+import java.util.Map;
 import java.util.SequencedCollection;
+import java.util.SequencedMap;
 import java.util.SequencedSet;
 
 import org.example.assignment.java21.university.AccountingDept;
 import org.example.assignment.java21.university.BusinessFaculty;
 import org.example.assignment.java21.university.EngineeringFaculty;
+import org.example.assignment.java21.university.HumanitiesFaculty;
 import org.example.assignment.java21.university.LecturerRecord;
+import org.example.assignment.java21.university.SocialCareDept;
 import org.example.assignment.java21.university.SoftwareEngineeringDept;
 
 void main(String[] args) {
@@ -88,8 +93,40 @@ private void seqSet() {
 
 
 private void seqMap() {
-}
 
+    SequencedMap<LecturerRecord, String> lecturerRecordSequencedMap = getLecturerRecordStringSequencedMap();
+
+    System.out.println( "====== seqMep ======" );
+    System.out.println();
+    System.out.println( "output the collection" );
+    System.out.println( lecturerRecordSequencedMap );
+    System.out.println();
+    System.out.println( "retrieve the first element in the collection" );
+    System.out.println( lecturerRecordSequencedMap.firstEntry() );
+    System.out.println();
+    System.out.println( "retrieve the last element in the collection" );
+    System.out.println( lecturerRecordSequencedMap.lastEntry() );
+    System.out.println();
+    System.out.println( "remove (poll) the last entry from the collection" );
+    System.out.println( lecturerRecordSequencedMap.pollLastEntry() );
+    System.out.println();
+    System.out.println( "output the collection again" );
+    System.out.println( lecturerRecordSequencedMap );
+    System.out.println();
+    System.out.println( "using an enhanced-for loop, process the collection from the beginning to the end;\n" +
+        "output both the keys and values." );
+    for ( Map.Entry<LecturerRecord, String> mapEntry : lecturerRecordSequencedMap.entrySet() ) {
+        System.out.println( mapEntry.getKey() + "; " + mapEntry.getValue() );
+    }
+    System.out.println();
+    System.out.println( "using an enhanced-for loop, process the collection from the end to the beginning;\n" +
+        "output both the keys and values." );
+    for ( Map.Entry<LecturerRecord, String> mapEntry : lecturerRecordSequencedMap.reversed().entrySet() ) {
+        System.out.println( mapEntry.getKey() + "; " + mapEntry.getValue() );
+    }
+
+
+}
 
 private static SequencedCollection<LecturerRecord> getLecturerRecordsCollection() {
     SequencedCollection<LecturerRecord> lecturerRecords = new ArrayList<>();
@@ -137,4 +174,22 @@ private static SequencedSet<LecturerRecord> getLecturerRecordSequencedSet() {
     lecturerRecordSequencedSet.addLast( janeAustin );
     lecturerRecordSequencedSet.addLast( anneBrontePhd );
     return lecturerRecordSequencedSet;
+}
+
+private static SequencedMap<LecturerRecord, String> getLecturerRecordStringSequencedMap() {
+    SequencedMap<LecturerRecord, String> lecturerRecordSequencedMap = new LinkedHashMap<>();
+
+    SocialCareDept socialCareDept = new SocialCareDept();
+    HumanitiesFaculty humanitiesFaculty = new HumanitiesFaculty();
+
+    LecturerRecord kingLear = new LecturerRecord( "King Lear", 88, humanitiesFaculty, socialCareDept );
+    LecturerRecord goneril = new LecturerRecord( "Goneril", 55, humanitiesFaculty, socialCareDept );
+    LecturerRecord regan = new LecturerRecord( "Regan", 50, humanitiesFaculty, socialCareDept );
+    LecturerRecord cordelia = new LecturerRecord( "Cordelia", 45, humanitiesFaculty, socialCareDept );
+
+    lecturerRecordSequencedMap.putFirst( goneril, "Eldest" );
+    lecturerRecordSequencedMap.putFirst( regan, "Middle" );
+    lecturerRecordSequencedMap.putLast( cordelia, "Youngest" );
+    lecturerRecordSequencedMap.putLast( kingLear, "Father" );
+    return lecturerRecordSequencedMap;
 }
