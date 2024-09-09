@@ -8,9 +8,9 @@ import java.util.SequencedSet;
 
 import org.example.assignment.java21.university.AccountingDept;
 import org.example.assignment.java21.university.BusinessFaculty;
+import org.example.assignment.java21.university.Department;
 import org.example.assignment.java21.university.EngineeringFaculty;
 import org.example.assignment.java21.university.Faculty;
-import org.example.assignment.java21.university.Department;
 import org.example.assignment.java21.university.HumanitiesFaculty;
 import org.example.assignment.java21.university.LecturerRecord;
 import org.example.assignment.java21.university.SocialCareDept;
@@ -22,10 +22,15 @@ void main(String[] args) {
     seqSet();
     seqMap();
 
-    LecturerRecord mikeBloggs = new LecturerRecord( "Mike Bloggs", 44, new EngineeringFaculty(), new SoftwareEngineeringDept() );
-    recordPatterns(mikeBloggs);
+    LecturerRecord mikeBloggs = new LecturerRecord(
+        "Mike Bloggs",
+        44,
+        new EngineeringFaculty(),
+        new SoftwareEngineeringDept()
+    );
+    recordPatterns( mikeBloggs );
     LecturerRecord alanAustin = new LecturerRecord( "Alan Austin", 65, new BusinessFaculty(), new AccountingDept() );
-    recordPatterns(alanAustin);
+    recordPatterns( alanAustin );
 }
 
 private void seqColl() {
@@ -200,14 +205,19 @@ private static SequencedMap<LecturerRecord, String> getLecturerRecordStringSeque
 
 private void recordPatterns(LecturerRecord mikeBloggs) {
     System.out.println(
-        switch ( mikeBloggs ){
+        switch ( mikeBloggs ) {
             case LecturerRecord lecturerRecord when lecturerRecord.age() >= 64 -> {
-            yield    """
-            name: %s
-            age: %s
-            faculty: %s
-            department: %s
-            """.formatted(lecturerRecord.name(), lecturerRecord.age(), lecturerRecord.faculty(), lecturerRecord.dept() );
+                yield """
+                    name: %s
+                    age: %s
+                    faculty: %s
+                    department: %s
+                    """.formatted(
+                    lecturerRecord.name(),
+                    lecturerRecord.age(),
+                    lecturerRecord.faculty(),
+                    lecturerRecord.dept()
+                );
             }
             default -> "";
         }
