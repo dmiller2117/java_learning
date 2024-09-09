@@ -9,6 +9,8 @@ import java.util.SequencedSet;
 import org.example.assignment.java21.university.AccountingDept;
 import org.example.assignment.java21.university.BusinessFaculty;
 import org.example.assignment.java21.university.EngineeringFaculty;
+import org.example.assignment.java21.university.Faculty;
+import org.example.assignment.java21.university.Department;
 import org.example.assignment.java21.university.HumanitiesFaculty;
 import org.example.assignment.java21.university.LecturerRecord;
 import org.example.assignment.java21.university.SocialCareDept;
@@ -19,8 +21,12 @@ void main(String[] args) {
     seqColl();
     seqSet();
     seqMap();
-}
 
+    LecturerRecord mikeBloggs = new LecturerRecord( "Mike Bloggs", 44, new EngineeringFaculty(), new SoftwareEngineeringDept() );
+    recordPatterns(mikeBloggs);
+    LecturerRecord alanAustin = new LecturerRecord( "Alan Austin", 65, new BusinessFaculty(), new AccountingDept() );
+    recordPatterns(alanAustin);
+}
 
 private void seqColl() {
 
@@ -91,7 +97,6 @@ private void seqSet() {
 
 }
 
-
 private void seqMap() {
 
     SequencedMap<LecturerRecord, String> lecturerRecordSequencedMap = getLecturerRecordStringSequencedMap();
@@ -125,13 +130,12 @@ private void seqMap() {
         System.out.println( mapEntry.getKey() + "; " + mapEntry.getValue() );
     }
 
-
 }
 
 private static SequencedCollection<LecturerRecord> getLecturerRecordsCollection() {
     SequencedCollection<LecturerRecord> lecturerRecords = new ArrayList<>();
-    EngineeringFaculty engineeringFaculty = new EngineeringFaculty();
-    SoftwareEngineeringDept softwareEngineeringDept = new SoftwareEngineeringDept();
+    Faculty engineeringFaculty = new EngineeringFaculty();
+    Department softwareEngineeringDept = new SoftwareEngineeringDept();
 
     LecturerRecord janeBloggs = new LecturerRecord(
         "Jane Bloggs",
@@ -160,8 +164,8 @@ private static SequencedCollection<LecturerRecord> getLecturerRecordsCollection(
 
 private static SequencedSet<LecturerRecord> getLecturerRecordSequencedSet() {
     SequencedSet<LecturerRecord> lecturerRecordSequencedSet = new LinkedHashSet<>();
-    BusinessFaculty businessFaculty = new BusinessFaculty();
-    AccountingDept accountingDept = new AccountingDept();
+    Faculty businessFaculty = new BusinessFaculty();
+    Department accountingDept = new AccountingDept();
 
     LecturerRecord janeAustin = new LecturerRecord( "Jane Austin", 24, businessFaculty, accountingDept );
     LecturerRecord drCharlotteBronte = new LecturerRecord( "Dr Charlotte Bronte", 35, businessFaculty, accountingDept );
@@ -179,8 +183,8 @@ private static SequencedSet<LecturerRecord> getLecturerRecordSequencedSet() {
 private static SequencedMap<LecturerRecord, String> getLecturerRecordStringSequencedMap() {
     SequencedMap<LecturerRecord, String> lecturerRecordSequencedMap = new LinkedHashMap<>();
 
-    SocialCareDept socialCareDept = new SocialCareDept();
-    HumanitiesFaculty humanitiesFaculty = new HumanitiesFaculty();
+    Department socialCareDept = new SocialCareDept();
+    Faculty humanitiesFaculty = new HumanitiesFaculty();
 
     LecturerRecord kingLear = new LecturerRecord( "King Lear", 88, humanitiesFaculty, socialCareDept );
     LecturerRecord goneril = new LecturerRecord( "Goneril", 55, humanitiesFaculty, socialCareDept );
@@ -192,4 +196,20 @@ private static SequencedMap<LecturerRecord, String> getLecturerRecordStringSeque
     lecturerRecordSequencedMap.putLast( cordelia, "Youngest" );
     lecturerRecordSequencedMap.putLast( kingLear, "Father" );
     return lecturerRecordSequencedMap;
+}
+
+private void recordPatterns(LecturerRecord mikeBloggs) {
+    System.out.println(
+        switch ( mikeBloggs ){
+            case LecturerRecord lecturerRecord when lecturerRecord.age() >= 64 -> {
+            yield    """
+            name: %s
+            age: %s
+            faculty: %s
+            department: %s
+            """.formatted(lecturerRecord.name(), lecturerRecord.age(), lecturerRecord.faculty(), lecturerRecord.dept() );
+            }
+            default -> "";
+        }
+    );
 }
